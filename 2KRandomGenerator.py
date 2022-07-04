@@ -8,6 +8,7 @@ start_time = time.time()
 alloff = []
 process = process_by_name("NBA2K21.exe")
 DictPotential = []
+DictTends = []
 CurrentPlayer = 0
 currentMultiplier = 0
 BadgesDict = {0: 'NOBADGE',1: 'Bronze', 2: 'Silver', 3: 'Gold',4: 'HallOfFame'}
@@ -32,6 +33,7 @@ class Attributes:
 	Year5 = (0x1B4) ##### WORKING
 	Year6 = (0x1B8) ##### WORKING
 	Position = (0xF9)
+	ShotTendence = (0x454)
 	FirstName = (0x28)
 	LastName = (0x0)
 	Potential = (0x43D)
@@ -75,6 +77,7 @@ def GetPlayer(proc,addr):
 def GetOverall():
 	attr = req["ATTRIBUTES"]
 	Badges = req["BADGES"]
+	Tendencies = req["TENDENCIES"]
 	base_address = process["modules"]["NBA2K21.exe"]["baseaddr"] + 0x058AD9E0
 	Addy = read_int64(process,base_address)
 	####GetPosition#####
@@ -112,10 +115,25 @@ def GetOverall():
 			Value = BadgesMultiplier(new)
 			alloff.append(Value)
 			#print(f'Stat:{nameoffset} has value of: {BadgesDict[new]}')
+
 	Overall = sum(alloff) / len(attr)
-	print(Overall)
 	RandomizeStats(Overall)
 	alloff.clear()
+	###########################
+	if CurrentPlayer in DictTends:
+		return
+	for f in Tendencies:
+		if HasKey("offset",f):
+			offset = f['offset']
+			nameoffset = f['name']
+			offset = int(offset, base=16)
+			newone = Addy + offset
+			stat = read_byte(process,newone)
+			NewPotential = random.randrange(stat-10,stat+15)
+			DictTends.append(CurrentPlayer)
+			#print(f'Stat:{nameoffset} has value of: {NewPotential}')
+			stat = write_byte(process,newone,NewPotential)
+
 
 ########## BEKA you need to give less power to defense stats and more to 3 pointers and more to offense at all... ###### do dat.
 def BadgesMultiplier(value):
@@ -169,7 +187,6 @@ def RandomizeContract(proc,OVR,Addy,Age):
 	if OVR <= 95:
 		ContractToGive = 1017781
 	if OVR >= 200:
-		print("ovr200")
 		ContractToGive = 40000000
 	AgeTransRange = transRange(Age,20,29,1,0.75)
 	ContractToGive = ContractToGive * AgeTransRange
@@ -179,7 +196,7 @@ def RandomizeContract(proc,OVR,Addy,Age):
 		AttrRef = eval(f'Attributes.Year{NWYR}')
 		NewContract = Addy + AttrRef
 		write_int(proc,NewContract,int(ContractToGive))
-		ContractToGive = ContractToGive * 1.05
+		ContractToGive = ContractToGive * 1.15
 	ContractToGive = 0
 	############### OPTIONS ###################
 	############### OPTIONS ###################
