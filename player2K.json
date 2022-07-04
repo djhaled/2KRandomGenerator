@@ -4247,6 +4247,7 @@
       "name": "DRIVING_LAYUP",
       "type": "slider",
       "offset": "0x41B",
+      "multiplier": {"PG":1.0,"SG":0.95,"SF":1,"PF":0.85,"C":0.85},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4256,6 +4257,7 @@
       "name": "POST_FADEAWAY",
       "type": "slider",
       "offset": "0x41C",
+      "multiplier": {"PG":0.5,"SG":0.5,"SF":0.7,"PF":1.05,"C":1.2},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4265,6 +4267,7 @@
       "name": "POST_HOOK",
       "type": "slider",
       "offset": "0x41D",
+      "multiplier": {"PG":0.5,"SG":0.5,"SF":0.7,"PF":1.05,"C":1.2},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4273,6 +4276,7 @@
     {
       "name": "POST_MOVES",
       "type": "slider",
+      "multiplier": {"PG":0.5,"SG":0.5,"SF":0.7,"PF":1.05,"C":1.2},
       "offset": "0x41E",
       "size": 1,
       "info": {
@@ -4283,6 +4287,7 @@
       "name": "DRAW_FOUL",
       "type": "slider",
       "offset": "0x41F",
+      "multiplier": {"PG":1.5,"SG":1.5,"SF":1.1,"PF":0.85,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4292,6 +4297,7 @@
       "name": "SHOT_CLOSE",
       "type": "slider",
       "offset": "0x420",
+      "multiplier": {"PG":0.8,"SG":0.8,"SF":0.8,"PF":1.35,"C":1.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4301,6 +4307,7 @@
       "name": "MID-RANGE_SHOT",
       "type": "slider",
       "offset": "0x421",
+      "multiplier": {"PG":1.5,"SG":1.5,"SF":1.1,"PF":0.85,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4310,6 +4317,7 @@
       "name": "3PT_SHOT",
       "type": "slider",
       "offset": "0x422",
+      "multiplier": {"PG":3.5,"SG":3.8,"SF":3.2,"PF":1.05,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4319,6 +4327,7 @@
       "name": "FREE_THROW",
       "type": "slider",
       "offset": "0x423",
+      "multiplier": {"PG":1.6,"SG":1.5,"SF":1.3,"PF":0.85,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4328,6 +4337,7 @@
       "name": "BALL_CONTROL",
       "type": "slider",
       "offset": "0x424",
+      "multiplier": {"PG":1.6,"SG":1.2,"SF":0.9,"PF":0.85,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4337,6 +4347,7 @@
       "name": "PASSING_IQ",
       "type": "slider",
       "offset": "0x425",
+      "multiplier": {"PG":1.6,"SG":1.2,"SF":0.8,"PF":0.85,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4346,6 +4357,7 @@
       "name": "PASSING_ACCURACY",
       "type": "slider",
       "offset": "0x426",
+      "multiplier": {"PG":1.6,"SG":1.2,"SF":0.8,"PF":0.85,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4355,6 +4367,7 @@
       "name": "OFFENSIVE_REBOUND",
       "type": "slider",
       "offset": "0x427",
+      "multiplier": {"PG":0.3,"SG":0.2,"SF":0.8,"PF":1.25,"C":1.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4364,6 +4377,7 @@
       "name": "STANDING_DUNK",
       "type": "slider",
       "offset": "0x431",
+      "multiplier": {"PG":0.4,"SG":0.4,"SF":0.8,"PF":1.25,"C":1.3},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4373,6 +4387,7 @@
       "name": "DRIVING_DUNK",
       "type": "slider",
       "offset": "0x432",
+      "multiplier": {"PG":0.6,"SG":0.6,"SF":1.3,"PF":1.25,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4382,6 +4397,7 @@
       "name": "SHOT_IQ",
       "type": "slider",
       "offset": "0x43A",
+      "multiplier": {"PG":1.3,"SG":1.2,"SF":1,"PF":0.85,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4391,6 +4407,7 @@
       "name": "PASSING_VISION",
       "type": "slider",
       "offset": "0x44F",
+      "multiplier": {"PG":1.3,"SG":1.1,"SF":1,"PF":0.85,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4400,6 +4417,7 @@
       "name": "HANDS",
       "type": "slider",
       "offset": "0x451",
+      "multiplier": {"PG":1,"SG":1,"SF":1,"PF":1,"C":1},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4413,6 +4431,7 @@
       "name": "DEFENSIVE_REBOUND",
       "type": "slider",
       "offset": "0x428",
+      "multiplier": {"PG":0.6,"SG":0.6,"SF":0.7,"PF":1,"C":1.2},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4422,6 +4441,7 @@
       "name": "INTERIOR_DEFENSE",
       "type": "slider",
       "offset": "0x429",
+      "multiplier": {"PG":0.6,"SG":0.6,"SF":0.7,"PF":1,"C":1},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4431,6 +4451,7 @@
       "name": "PERIMETER_DEFENSE",
       "type": "slider",
       "offset": "0x42A",
+      "multiplier": {"PG":1,"SG":1,"SF":1,"PF":0.6,"C":0.4},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4440,6 +4461,7 @@
       "name": "BLOCK",
       "type": "slider",
       "offset": "0x42D",
+      "multiplier": {"PG":0.3,"SG":0.3,"SF":0.5,"PF":1,"C":1.3},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4449,6 +4471,7 @@
       "name": "STEAL",
       "type": "slider",
       "offset": "0x42E",
+      "multiplier": {"PG":1,"SG":1,"SF":1.2,"PF":0.8,"C":0.6},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4458,6 +4481,7 @@
       "name": "SHOT_CONTEST",
       "type": "slider",
       "offset": "0x452",
+      "multiplier": {"PG":0.3,"SG":0.3,"SF":0.5,"PF":1,"C":1.3},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4471,6 +4495,7 @@
       "name": "LATERAL_QUICKNESS",
       "type": "slider",
       "offset": "0x42B",
+      "multiplier": {"PG":1,"SG":1,"SF":1,"PF":1,"C":0.7},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4480,6 +4505,7 @@
       "name": "SPEED",
       "type": "slider",
       "offset": "0x433",
+      "multiplier": {"PG":1,"SG":1,"SF":1,"PF":1,"C":0.7},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4489,6 +4515,7 @@
       "name": "SPEED_WITH_BALL",
       "type": "slider",
       "offset": "0x434",
+      "multiplier": {"PG":1.2,"SG":1,"SF":1,"PF":0.9,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4498,15 +4525,7 @@
       "name": "ACCELERATION",
       "type": "slider",
       "offset": "0x435",
-      "size": 1,
-      "info": {
-        "class": "AttributesValue"
-      }
-    },
-    {
-      "name": "VERTICAL",
-      "type": "slider",
-      "offset": "0x436",
+      "multiplier": {"PG":1.2,"SG":1,"SF":1.3,"PF":1.2,"C":0.8},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4516,24 +4535,7 @@
       "name": "STRENGTH",
       "type": "slider",
       "offset": "0x437",
-      "size": 1,
-      "info": {
-        "class": "AttributesValue"
-      }
-    },
-    {
-      "name": "STAMINA",
-      "type": "slider",
-      "offset": "0x438",
-      "size": 1,
-      "info": {
-        "class": "AttributesValue"
-      }
-    },
-    {
-      "name": "HUSTLE",
-      "type": "slider",
-      "offset": "0x439",
+      "multiplier": {"PG":0.6,"SG":0.6,"SF":0.8,"PF":1,"C":1.3},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4547,6 +4549,7 @@
       "name": "PASS_PERCEPTION",
       "type": "slider",
       "offset": "0x42C",
+      "multiplier": {"PG":1,"SG":1,"SF":1,"PF":1,"C":1},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4556,6 +4559,7 @@
       "name": "DEFENSIVE_CONSISTENCY",
       "type": "slider",
       "offset": "0x42F",
+      "multiplier": {"PG":1,"SG":1,"SF":1,"PF":1.2,"C":1.2},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4565,6 +4569,7 @@
       "name": "HELP_DEFENSIVE_IQ",
       "type": "slider",
       "offset": "0x430",
+      "multiplier": {"PG":0.9,"SG":1,"SF":1,"PF":1.2,"C":1.2},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4574,6 +4579,7 @@
       "name": "OFFENSIVE_CONSISTENCY",
       "type": "slider",
       "offset": "0x43B",
+      "multiplier": {"PG":0.9,"SG":1,"SF":1,"PF":0.8,"C":1.0},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4583,6 +4589,7 @@
       "name": "PICK_AND_ROLL_DEFENSIVE_IQ",
       "type": "slider",
       "offset": "0x450",
+      "multiplier": {"PG":0.9,"SG":1,"SF":1,"PF":0.8,"C":1.0},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -4596,6 +4603,7 @@
       "name": "POTENTIAL",
       "type": "slider",
       "offset": "0x43D",
+      "multiplier": {"PG":1,"SG":1,"SF":1,"PF":1,"C":1.0},
       "size": 1,
       "info": {
         "class": "AttributesValue"
@@ -12774,7 +12782,7 @@
       "size": 6,
       "info": {
         "startbit": 1
-      }
+        }
     },
     {
       "name": "ASSISTS#SEASON",
