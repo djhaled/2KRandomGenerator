@@ -15,17 +15,6 @@ def GetNumByte(number,byte):
 	return number*byte
 
 
-def Get_Position(bit):
-	if bit == 0:
-		return 'PG'
-	if bit == 1:
-		return 'SG'
-	if bit == 2:
-		return 'SF'
-	if bit == 3:
-		return 'PF'
-	if bit == 4:
-		return 'C'
 
 def GetPotential(proc,addr):
 	Potential = read_byte(proc,addr)
@@ -33,30 +22,30 @@ def GetPotential(proc,addr):
 	write_byte(process,addr,NewPotential)
 
 def GetPlayer(proc,addr):
-	UniqueID = read_bytes(proc,addr,2)
-	address_int = int.from_bytes(UniqueID, "little")
-	global CurrentPlayer
-	CurrentPlayer = address_int
-	first_name = read_string(proc, addr + Attributes.FirstName, 256)
-	last_name = read_string(proc, addr + Attributes.LastName, 256)
+    UniqueID = read_bytes(proc,addr,2)
+    address_int = int.from_bytes(UniqueID, "little")
+    global CurrentPlayer
+    CurrentPlayer = address_int
+    first_name = read_string(proc, addr + Attributes.FirstName, 256)
+    last_name = read_string(proc, addr + Attributes.LastName, 256)
 
 def GetOverall():
-	## +3CE1190 BASE ADDY
-	base_address = process["modules"]["NBA2K23.exe"]["baseaddr"] + 0x3CE1190
-	Addy = read_int64(process,base_address)
-	####GetPosition#####
-	GetPlayer(process,Addy+Attributes.UniqueID)
-	GetPotential(process,Addy+Attributes.Potential)
-	NewAddy = Addy + Attributes.Position
-	PositionBit = read_bit(process,NewAddy,0,3)
-	Position = Get_Position(PositionBit)
-	CacheOvrAddy = Addy + Attributes.CacheOVR
-	Overall = read_float(process,CacheOvrAddy)
-	RandomizeStats(Overall)
-	###########################
+    try:
+        base_address = process["modules"]["NBA2K23.exe"]["baseaddr"] + 0x3CE1190
+        Addy = read_int64(process,base_address)
+        GetPlayer(process,Addy+Attributes.UniqueID)
+        GetPotential(process,Addy+Attributes.Potential)
+        NewAddy = Addy + Attributes.Position
+        CacheOvrAddy = Addy + Attributes.CacheOVR
+        Overall = read_float(process,CacheOvrAddy)
+        RandomizeStats(Overall)
+    except Exception as e:
+        print("An error occurred while trying to read player overall. Skipping this player...")
+        print(e)
+
 
 def RandomizeAge(proc,Addy):
-	age = (random.randint(1993, 2000))
+	age = (random.randint(1995, 2001))
 	NewBirthYear = Addy + Attributes.BirthYear
 	write_int(proc,NewBirthYear,age)
 	return 2020 - age
@@ -81,16 +70,29 @@ def RandomizeTends(proc,Addy):
 	write_int(proc,NewPlayForFinancial,financial)
 
 def RandomizeContract(proc,OVR,Addy,Age):
-	yearsleft = (random.randint(1, 5))
+	## Depending on player ability
+	if OVR < 80:
+		chance_of_multi_year_deal = 50
+	elif OVR < 85:
+		 chance_of_multi_year_deal = 70
+	else:
+		chance_of_multi_year_deal = 90
+	if random.randint(1, 100) <= chance_of_multi_year_deal:
+		yearsleft = (random.randint(1, 5))
+	else:
+		yearsleft = 1
 	NewYearsLeft = Addy + Attributes.YearsLeft
 	write_int(proc,NewYearsLeft,GetNumByte(yearsleft,4))
+	### contract money
 	ContractToGive = transRange(OVR,75,92,1017781,40000000)
-	if OVR <= 74:
+	if OVR <= 75:
 		ContractToGive = 1017781
 	if OVR >= 92:
 		ContractToGive = 40000000
 	AgeTransRange = transRange(Age,20,29,1,0.75)
 	ContractToGive = ContractToGive * AgeTransRange
+
+	write_int(proc,Addy+Attributes.ExtensionLength,0)
 	#print(f'Age:{Age} Contract:{ContractToGive}')
 	for i in range(yearsleft):
 		NWYR = i + 1
@@ -158,6 +160,7 @@ class Attributes:
 	YearsLeft = (0x32A) ##### WORKING 4bit
 	BirthYear = (0x6E) ##### WORKING
 	NoTrade = (0x342) ##### working 64 bit
+	ExtensionLength = (0x33D)
 	ContractOption = (0x313)##### working 16bit
 	PeakStart = (0x72) #####  working 16 bit --- bugged gemeos 1
 	PeakEnd = (0x73) ##### working 4 bit     --- bugged gemeos 1
@@ -170,6 +173,8 @@ class Attributes:
 while True:
 	GetOverall()
 	time.sleep(0.04)
+
+
 	
 
 
